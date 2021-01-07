@@ -41,5 +41,24 @@ public class Egg {
         this.spell = spell;
     }
 
+    /**
+     * @return {@link this#id}
+     */
+    public @NonNull String getId() {
+        return id;
+    }
 
+    /**
+     * @return {@link this#itemStack}
+     */
+    public @NonNull ItemStack getItemStack() {
+        return itemStack;
+    }
+
+    /**
+     * @return {@link this#spell}
+     */
+    public @NonNull Spell getSpell() {
+        return spell;
+    }
 }
