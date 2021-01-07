@@ -2,7 +2,7 @@ package dev.kscott.spelleggs;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class SpellEggs extends JavaPlugin {
+public final class SpellEggsPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {

@@ -1,5 +1,5 @@
 name: SpellEggs
 version: @version@
-main: dev.kscott.spelleggs.SpellEggs
+main: dev.kscott.spelleggs.SpellEggsPlugin
 api-version: 1.16
 description: Give eggs an actual purpose.
