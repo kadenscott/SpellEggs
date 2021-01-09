@@ -67,6 +67,16 @@ public class EggRegistry {
                         eggIdKey
                 )
         );
+
+        registerEgg(
+                Egg.createEgg(
+                        "relocation",
+                        Component.text("Relocation Egg").color(NamedTextColor.BLUE),
+                        Material.ENDERMAN_SPAWN_EGG,
+                        spellRegistry.getSpell("relocation"),
+                        eggIdKey
+                )
+        );
     }
 
     /**
