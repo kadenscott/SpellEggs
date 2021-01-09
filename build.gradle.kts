@@ -16,8 +16,9 @@ dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT")
 
     implementation("net.kyori:adventure-platform-bukkit:4.0.0-SNAPSHOT")
-    implementation("cloud.commandframework:cloud-paper:1.3.0")
     implementation("net.kyori:adventure-text-minimessage:4.0.0-SNAPSHOT")
+    implementation("cloud.commandframework:cloud-paper:1.3.0")
+    implementation("com.github.stefvanschie.inventoryframework:IF:0.9.1")
 }
 
 
