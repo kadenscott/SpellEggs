@@ -53,6 +53,9 @@ public class EggRegistry {
         this.registerEggs();
     }
 
+    /**
+     * Registers default eggs.
+     */
     private void registerEggs() {
         // Explode egg
         registerEgg(
