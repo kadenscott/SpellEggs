@@ -33,14 +33,14 @@ public class RelocationSpell extends Spell {
 
         final @NonNull Collection<LivingEntity> entities = location.getNearbyLivingEntities(localX, localY, localZ);
 
-        final int minX = (int) location.getX()-localX;
-        final int maxX = (int) location.getX()+localX;
+        final int minX = location.getBlockX()-localX;
+        final int maxX = location.getBlockX()+localX;
 
-        final int minY = (int) location.getY()-localY;
-        final int maxY = (int) location.getY()+localY;
+        final int minY = location.getBlockY()-localY;
+        final int maxY = location.getBlockY()+localY;
 
-        final int minZ = (int) location.getZ()-localZ;
-        final int maxZ = (int) location.getZ()+localZ;
+        final int minZ = location.getBlockZ()-localZ;
+        final int maxZ = location.getBlockZ()+localZ;
 
         for (int x = minX; x <= maxX; x++) {
             for (int y = minY; y <= maxY; y++) {
