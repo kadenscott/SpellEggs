@@ -65,6 +65,8 @@ public class EggInteractListener implements Listener {
         // Create projectile
         final @NonNull Egg egg = player.launchProjectile(Egg.class);
 
+        egg.setItem(itemStack);
+
         egg.getPersistentDataContainer().set(eggIdKey, PersistentDataType.STRING, eggId);
         egg.getPersistentDataContainer().set(playerKey, PersistentDataType.STRING, player.getName());
     }
