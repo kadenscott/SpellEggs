@@ -76,11 +76,12 @@ public class Egg {
             final @NonNull Spell spell,
             final @NonNull NamespacedKey eggIdKey
     ) {
-        final @NonNull ItemStack explodeEggItemStack = new ItemStack(material);
-        final @NonNull ItemMeta itemMeta = Bukkit.getItemFactory().getItemMeta(explodeEggItemStack.getType());
+        final @NonNull ItemStack itemStack = new ItemStack(material);
+        final @NonNull ItemMeta itemMeta = Bukkit.getItemFactory().getItemMeta(itemStack.getType());
         itemMeta.setDisplayNameComponent(BungeeComponentSerializer.legacy().serialize(name));
-        itemMeta.getPersistentDataContainer().set(eggIdKey, PersistentDataType.STRING, "explode");
-        explodeEggItemStack.setItemMeta(itemMeta);
+        itemMeta.getPersistentDataContainer().set(eggIdKey, PersistentDataType.STRING, id);
+        itemStack.setItemMeta(itemMeta);
 
+        return new Egg(id, itemStack, spell);
     }
 }

@@ -1,20 +1,16 @@
 package dev.kscott.spelleggs.egg;
 
-import dev.kscott.spelleggs.spell.Spell;
 import dev.kscott.spelleggs.spell.SpellRegistry;
-import org.bukkit.Bukkit;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -59,15 +55,15 @@ public class EggRegistry {
 
     private void registerEggs() {
         // Explode egg
-        final @NonNull ItemStack explodeEggItemStack = new ItemStack(Material.BLAZE_SPAWN_EGG);
-        final @NonNull ItemMeta itemMeta = Bukkit.getItemFactory().getItemMeta(explodeEggItemStack.getType());
-        itemMeta.setDisplayName("&cExplode Egg");
-        itemMeta.getPersistentDataContainer().set(eggIdKey, PersistentDataType.STRING, "explode");
-        explodeEggItemStack.setItemMeta(itemMeta);
-
-        final @NonNull Spell explodeSpell = spellRegistry.getSpell("explode");
-
-        this.registerEgg(new Egg("explode", explodeEggItemStack, explodeSpell));
+        registerEgg(
+                Egg.createEgg(
+                        "explode",
+                        Component.text("Explode Egg").color(NamedTextColor.RED),
+                        Material.BLAZE_SPAWN_EGG,
+                        spellRegistry.getSpell("explode"),
+                        eggIdKey
+                )
+        );
     }
 
     /**
