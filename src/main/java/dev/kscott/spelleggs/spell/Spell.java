@@ -32,5 +32,7 @@ public abstract class Spell {
             final @NonNull Player player
     );
 
-
+    public @NonNull String getId() {
+        return id;
+    }
 }

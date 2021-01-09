@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.kscott"
-version = "1.0.0"
+version = "1.0.1"
 
 dependencies {
     compileOnlyApi("org.checkerframework:checker-qual:3.5.0")

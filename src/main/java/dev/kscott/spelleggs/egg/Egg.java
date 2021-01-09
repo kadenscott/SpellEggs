@@ -1,7 +1,14 @@
 package dev.kscott.spelleggs.egg;
 
 import dev.kscott.spelleggs.spell.Spell;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
@@ -27,9 +34,9 @@ public class Egg {
     /**
      * Constructs the Egg
      *
-     * @param id {@link this#id}
+     * @param id        {@link this#id}
      * @param itemStack {@link this#itemStack}
-     * @param spell {@link this#spell}
+     * @param spell     {@link this#spell}
      */
     public Egg(
             final @NonNull String id,
@@ -60,5 +67,20 @@ public class Egg {
      */
     public @NonNull Spell getSpell() {
         return spell;
+    }
+
+    public static Egg createEgg(
+            final @NonNull String id,
+            final @NonNull Component name,
+            final @NonNull Material material,
+            final @NonNull Spell spell,
+            final @NonNull NamespacedKey eggIdKey
+    ) {
+        final @NonNull ItemStack explodeEggItemStack = new ItemStack(material);
+        final @NonNull ItemMeta itemMeta = Bukkit.getItemFactory().getItemMeta(explodeEggItemStack.getType());
+        itemMeta.setDisplayNameComponent(BungeeComponentSerializer.legacy().serialize(name));
+        itemMeta.getPersistentDataContainer().set(eggIdKey, PersistentDataType.STRING, "explode");
+        explodeEggItemStack.setItemMeta(itemMeta);
+
     }
 }
