@@ -49,10 +49,20 @@ public class EggInteractListener implements Listener {
 
         event.setCancelled(true);
 
+        // consume egg
+        int count = itemStack.getAmount();
+
+        if (count == 1) {
+            itemStack.setAmount(0);
+        } else {
+            itemStack.setAmount(itemStack.getAmount() - 1);
+        }
+
         final @NonNull String eggId = itemMeta.getPersistentDataContainer().get(eggIdKey, PersistentDataType.STRING);
 
         final @NonNull Player player = event.getPlayer();
 
+        // Create projectile
         final @NonNull Egg egg = player.launchProjectile(Egg.class);
 
         egg.getPersistentDataContainer().set(eggIdKey, PersistentDataType.STRING, eggId);
