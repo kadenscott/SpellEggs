@@ -12,6 +12,7 @@ import dev.kscott.spelleggs.egg.Egg;
 import dev.kscott.spelleggs.egg.EggRegistry;
 import dev.kscott.spelleggs.listeners.EggHitListener;
 import dev.kscott.spelleggs.listeners.EggInteractListener;
+import dev.kscott.spelleggs.menu.MenuManager;
 import dev.kscott.spelleggs.spell.SpellRegistry;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.command.CommandSender;
@@ -36,6 +37,7 @@ public final class SpellEggsPlugin extends JavaPlugin {
      */
     private @MonotonicNonNull BukkitAudiences bukkitAudiences;
 
+    private final @NonNull MenuManager menuManager;
 
     private final @NonNull EggRegistry eggRegistry;
 
@@ -44,6 +46,7 @@ public final class SpellEggsPlugin extends JavaPlugin {
     public SpellEggsPlugin() {
         this.spellRegistry = new SpellRegistry();
         this.eggRegistry = new EggRegistry(this, this.spellRegistry);
+        this.menuManager = new MenuManager();
     }
 
     @Override
@@ -103,6 +106,20 @@ public final class SpellEggsPlugin extends JavaPlugin {
                     final @NonNull ItemStack itemStack = egg.getItemStack();
 
                     player.getInventory().addItem(itemStack);
+                })
+        );
+
+        this.manager.command(builder.literal("gui")
+                .handler(ctx -> {
+                    final @NonNull CommandSender sender = ctx.getSender();
+
+                    if (!(sender instanceof Player)) {
+                        return;
+                    }
+
+                    final @NonNull Player player = (Player) sender;
+
+                    this.menuManager.openMenu(player);
                 })
         );
 
