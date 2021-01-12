@@ -110,17 +110,19 @@ public final class SpellEggsPlugin extends JavaPlugin {
         );
 
         this.manager.command(builder.literal("gui")
-                .handler(ctx -> {
-                    final @NonNull CommandSender sender = ctx.getSender();
+                .handler(context -> manager.taskRecipe().begin(context)
+                        .synchronous(ctx -> {
+                            final @NonNull CommandSender sender = ctx.getSender();
 
-                    if (!(sender instanceof Player)) {
-                        return;
-                    }
+                            if (!(sender instanceof Player)) {
+                                return;
+                            }
 
-                    final @NonNull Player player = (Player) sender;
+                            final @NonNull Player player = (Player) sender;
 
-                    this.menuManager.openMenu(player);
-                })
+                            this.menuManager.openMenu(player);
+                        }).execute()
+                )
         );
 
     }
