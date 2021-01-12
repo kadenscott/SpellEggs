@@ -3,6 +3,7 @@ package dev.kscott.spelleggs.egg;
 import dev.kscott.spelleggs.spell.SpellRegistry;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -62,7 +63,7 @@ public class EggRegistry {
                 Egg.createEgg(
                         "explode",
                         Component.text("Explode Egg").color(NamedTextColor.RED),
-                        Material.BLAZE_SPAWN_EGG,
+                        Material.CHICKEN_SPAWN_EGG,
                         spellRegistry.getSpell("explode"),
                         eggIdKey
                 )
@@ -74,6 +75,16 @@ public class EggRegistry {
                         Component.text("Relocation Egg").color(NamedTextColor.BLUE),
                         Material.ENDERMAN_SPAWN_EGG,
                         spellRegistry.getSpell("relocation"),
+                        eggIdKey
+                )
+        );
+
+        registerEgg(
+                Egg.createEgg(
+                        "blazing",
+                        Component.text("Blazing Egg").color(TextColor.color(232, 150, 28)),
+                        Material.BLAZE_SPAWN_EGG,
+                        spellRegistry.getSpell("blazing"),
                         eggIdKey
                 )
         );

@@ -16,6 +16,7 @@ public class SpellRegistry {
         this.registerSpell(new ExplodeSpell());
         this.registerSpell(new HealSpell());
         this.registerSpell(new RelocationSpell());
+        this.registerSpell(new BlazingSpell());
     }
 
     /**
