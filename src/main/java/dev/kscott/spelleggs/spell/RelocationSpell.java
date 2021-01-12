@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -32,7 +33,7 @@ public class RelocationSpell extends Spell {
 
         final @NonNull World world = location.getWorld();
 
-        final @NonNull Collection<LivingEntity> entities = location.getNearbyLivingEntities(localX, localY, localZ);
+        final @NonNull Collection<Entity> entities = location.getNearbyEntities(localX, localY, localZ);
 
 
 
@@ -64,7 +65,7 @@ public class RelocationSpell extends Spell {
             }
         }
 
-        for (final LivingEntity entity : entities) {
+        for (final Entity entity : entities) {
             final @NonNull Location entityLocation = entity.getLocation();
 
             entityLocation.add(0, teleportationHeight, 0);
