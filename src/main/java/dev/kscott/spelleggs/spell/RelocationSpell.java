@@ -16,9 +16,7 @@ import java.util.Random;
 public class RelocationSpell extends Spell {
 
     final int localX = 7;
-    final int localY = 3;
     final int localZ = 7;
-    final int teleportationHeight = 20;
 
     final @NonNull Random random;
 
@@ -29,9 +27,14 @@ public class RelocationSpell extends Spell {
 
     @Override
     public void onActivation(@NonNull Location location, @NonNull Player player) {
+        final int teleportationHeight = random.nextInt(20)+15;
+        final int localY = random.nextInt(15)+5;
+
         final @NonNull World world = location.getWorld();
 
         final @NonNull Collection<LivingEntity> entities = location.getNearbyLivingEntities(localX, localY, localZ);
+
+
 
         final int minX = location.getBlockX()-localX;
         final int maxX = location.getBlockX()+localX;
