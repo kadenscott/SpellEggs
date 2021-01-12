@@ -46,7 +46,7 @@ public final class SpellEggsPlugin extends JavaPlugin {
     public SpellEggsPlugin() {
         this.spellRegistry = new SpellRegistry();
         this.eggRegistry = new EggRegistry(this, this.spellRegistry);
-        this.menuManager = new MenuManager();
+        this.menuManager = new MenuManager(this.eggRegistry);
     }
 
     @Override
